@@ -8,4 +8,4 @@ Aulas de Desenvolvimento de Sistemas.
 
 #### Created by:
 
-- Andrei Legramerda: [AndreiLegram](https://github.com/AndreiLegram)
+- [AndreiLegram](https://github.com/AndreiLegram)
