@@ -1,0 +1,15 @@
+@baseUrl = http://localhost:3000
+@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzMxNDU1NDA2LCJleHAiOjE3MzE0NTU3MDZ9.9ApDNvx-IcpBHuj2MI_UTAMvY0uowXRZPgpdKbJ6HMc
+
+### Autenticação
+POST {{baseUrl}}/login/
+Content-Type: application/json
+
+{
+    "username": "usuario",
+    "password": "senha"
+}
+
+### Rota Privada
+GET {{baseUrl}}/privada/
+Authorization: Bearer {{authToken}}

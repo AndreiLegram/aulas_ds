@@ -1,0 +1,28 @@
+@baseUrl = http://localhost:3000
+
+### Retorna todas as contas
+GET {{baseUrl}}/accounts
+
+### Retorna uma conta específica
+GET {{baseUrl}}/accounts/3
+
+### Cria uma nova conta
+POST {{baseUrl}}/accounts/
+Content-Type: application/json
+
+{
+    "id": 4,
+    "username": "davesmith",
+    "role": "admin"
+}
+
+### Altera a conta com id=1
+PUT {{baseUrl}}/accounts/1
+Content-Type: application/json
+
+{
+    "role": "guest"
+}
+
+### Exclui uma conta específica
+DELETE {{baseUrl}}/accounts/1
