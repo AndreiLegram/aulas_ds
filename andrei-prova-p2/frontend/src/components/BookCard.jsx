@@ -30,12 +30,12 @@ function BookCard(params) {
   const dateStr = refreshDate(params.props.publishDate)
 
   const handleClick = () => {
-    if (params.props.id) {
-      navigate(`/livros/${params.props.id}`);
+    if (params.props._id) {
+      navigate(`/livros/${params.props._id}`);
     }
   };
 
-  const idCard = params.props.id ? params.props.id : 0
+  const idCard = params.props._id ? params.props._id : 0
 
   const headerTitle = params.props.title ? params.props.title : 'Sem título'
 

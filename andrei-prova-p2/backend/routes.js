@@ -1,13 +1,12 @@
-// Importando as dependências do projeto
 const express = require('express');
 const routes = express.Router();
 
-// Referencia o Controller CourseController
-const CourseController = require('./controllers/CourseController');
-// associa as rotas ao seu método do Controller
-routes.get('/courses',CourseController.index);
-routes.get('/courses/:id',CourseController.show);
-routes.post('/courses',CourseController.store);
-routes.put('/courses/:id',CourseController.update);
-routes.delete('/courses/:id',CourseController.delete);
+const BookController = require('./controllers/BookController');
+
+routes.get('/books', BookController.index);
+routes.get('/books/:id', BookController.show);
+routes.post('/books', BookController.store);
+routes.put('/books/:id', BookController.update);
+routes.delete('/books/:id', BookController.delete);
+
 module.exports = routes;

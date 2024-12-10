@@ -1,28 +1,33 @@
 @baseUrl = http://localhost:3000
+@bookId = 123
 
-### Pesquisa todos os cursos
-GET {{baseUrl}}/api/courses?page=3
+### Pesquisa todos os livros
+GET {{baseUrl}}/api/books?page=1
 
-### Pesquisa curso específico
-GET {{baseUrl}}/api/courses/673d267001d8f216f8023b2c
+### Pesquisa um livro específico
+GET {{baseUrl}}/api/books/{{bookId}}
 
-### Cria uma nova conta
-POST {{baseUrl}}/api/courses
+### Cria um novo livro
+POST {{baseUrl}}/api/books
 Content-Type: application/json
 
 {
-    "name": "Agronomia",
-    "description": "Curso Superior de Agronomia",
-    "url": "http://ifrs.edu.br/bento"
+    "title": "Crime e Castigo",
+    "description": "Crime e Castigo é um romance do escritor Fiódor Dostoiévski",
+    "publishDate": "1866-01-05",
+    "pageCount": 592
 }
 
-### Altera a conta com id=1
-PUT {{baseUrl}}/api/courses/673d267001d8f216f8023b2c
+### Altera o livro com id={{bookId}}
+PUT {{baseUrl}}/api/books/{{bookId}}
 Content-Type: application/json
 
 {
-    "name": "Bacharel em Agronomia"
+    "title": "A Metamorfose",
+    "description": "A Metamorfose é uma novela escrita por Franz Kafka",
+    "publishDate": "1915-12-10",
+    "pageCount": 96
 }
 
-### Exclui uma conta específica
-DELETE {{baseUrl}}/api/courses/673d267001d8f216f8023b2c
+### Exclui um livro específico
+DELETE {{baseUrl}}/api/books/{{bookId}}

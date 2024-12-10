@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router-dom';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import BookCard from './BookCard'
 import PostBook from './PostBook'
-import PatchBook from './PatchBook'
+import PutBook from './PutBook'
 import DeleteBook from './DeleteBook'
 import * as Yup from 'yup';
 
@@ -61,12 +61,31 @@ function BookForm(p) {
       .lessThan(1000, 'O livro não pode ultrapassar 1000 páginas'),
   });
   const handleSubmit = (data) => {
-    if (data.id > 0) {
-      PatchBook(data)
+    console.log(data)
+    if (params._id.length > 0) {
+      data._id = params._id
+      const promise = PutBook(data);
+      promise
+        .then(res => {
+          if (res.status >= 200 && res.status < 300) {
+            navigate(`/livros`);
+          } else {
+            console.log(`Erro: Status ${res.status}`)
+          }
+        })
+        .catch(err => console.log(err));
     } else {
-      PostBook(data)
+      const promise = PostBook(data);
+      promise
+        .then(res => {
+          if (res.status >= 200 && res.status < 300) {
+            navigate(`/livros`);
+          } else {
+            console.log(`Erro: Status ${res.status}`)
+          }
+        })
+        .catch(err => console.log(err));
     }
-    setParams(data);
   }
 
   const initialValues = {
@@ -78,19 +97,20 @@ function BookForm(p) {
 
   const excluir = () => {
     if (confirm(`Tem certeza de que deseja excluir o livro '${params.title}'?`)) {
-      DeleteBook(params)
-      setParams({
-          "id": null,
-          "title": null,
-          "description": null,
-          "pageCount": null,
-          "excerpt": null,
-          "publishDate": null
-      })
+      const promise = DeleteBook(params);
+      promise
+        .then(res => {
+          if (res.status >= 200 && res.status < 300) {
+            navigate(`/livros`);
+          } else {
+            console.log(`Erro: Status ${res.status}`)
+          }
+        })
+        .catch(err => console.log(err));
     };
   }
 
-  const botaoExcluir = params.id > 0 ? 
+  const botaoExcluir = params._id.length > 0 ? 
   <button type="button" onClick={excluir}>Excluir</button> : ''
 
   return (

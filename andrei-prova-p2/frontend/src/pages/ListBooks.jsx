@@ -20,9 +20,11 @@ function ListBooks() {
                 <Loader active inline='centered'>Carregando</Loader>
             :
                 <>{
-                    data &&
-                    data.length > 0 &&
-                    data.map(item => <BookCard props={item} onClick={() => setSearch(item.id)} />)
+                    data && data.docs.length > 0
+                    ?
+                      data.docs.map(item => <BookCard props={item} onClick={() => setSearch(item._id)} />)
+                    :
+                      <Header as='h3' style={{ margin: '3em 4em 3em 1em' }}>Nenhum livro encontrado...</Header>
                 }</>
             }
             {error ? <p>{error}</p> : null}

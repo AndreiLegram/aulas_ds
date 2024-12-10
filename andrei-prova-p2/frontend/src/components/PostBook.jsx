@@ -1,14 +1,8 @@
 import React from 'react';
 import axios from 'axios';
+
 function PostBook(book) {
-  axios({
-    url: 'https://fakerestapi.azurewebsites.net/api/v1/Books',
-    method: 'POST',
-    data: book
-  })
-    .then(res => console.log(res));
-  return (
-    <p>Teste de POST com API Axios</p>
-  );
+  return axios.post(`http://localhost:3000/api/books`, book);
 }
+
 export default PostBook;

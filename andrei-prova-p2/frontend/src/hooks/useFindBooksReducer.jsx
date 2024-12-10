@@ -34,13 +34,9 @@ export function useFindBooksReducer(search) {
     useEffect(() => {
         async function listBooks() {
             try {
-                const apiUrl = 'https://fakerestapi.azurewebsites.net/api/v1/Books';
+                const apiUrl = 'http://localhost:3000/api/books';
                 const result = await axios.get(apiUrl);
-                result.data = result.data.slice(0, 6)
                 if (result.data) {
-                    if (search !== '') {
-                        result.data.filter(b => b.title === search)
-                    }
                     dispatch({ type: 'OnSuccess', payload: result.data });
                 } else {
                     dispatch({ type: 'OnFailure' });

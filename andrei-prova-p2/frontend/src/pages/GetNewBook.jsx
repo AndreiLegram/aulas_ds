@@ -6,12 +6,11 @@ function GetBook() {
   const book = useLoaderData();
   return (
     <BookForm props={{
-      "id": null,
+      "_id": '',
       "title": null,
       "description": null,
-      "pageCount": null,
-      "excerpt": null,
-      "publishDate": null
+      "publishDate": null,
+      "pageCount": null
     }} />
   );
 }
